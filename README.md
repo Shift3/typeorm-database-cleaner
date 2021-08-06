@@ -60,7 +60,13 @@ strategy.
 
 In order to develop on the library itself, do the following things.
 
+1. Install and use the correct node version: `nvm install && nvm use`
 1. `cp sample-env .env`
 1. Customize environment variables for your database.
-1. `createdb typeorm-database-cleaner-test`
+1. Create the testing database: `createdb typeorm-database-cleaner-test`
 1. Run the tests: `npm test`
+
+## Publish to npm
+
+1. Build the modules `npm run build`
+1. Publish to npm `npm publish`
