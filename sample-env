@@ -1,0 +1,8 @@
+TYPEORM_CONNECTION = postgres
+TYPEORM_HOST = localhost
+TYPEORM_USERNAME = jschiff
+TYPEORM_PASSWORD =
+TYPEORM_DATABASE = typeorm-database-cleaner-test
+TYPEORM_SYNCHRONIZE = true
+TYPEORM_LOGGING = false
+TYPEORM_ENTITIES = tests/entities/**/*.ts

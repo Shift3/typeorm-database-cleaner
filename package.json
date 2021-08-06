@@ -1,0 +1,34 @@
+{
+  "name": "typeorm-database-cleaner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
+  },
+  "files": [
+    "lib",
+    "package.json"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "typeorm": "^0.2.36"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.4.13",
+    "chai": "^4.3.4",
+    "mocha": "^9.0.3",
+    "pg": "^8.7.1",
+    "rollup": "^2.56.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-node": "^10.1.0",
+    "typeorm": "^0.2.36",
+    "typescript": "^4.3.5"
+  }
+}

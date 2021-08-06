@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outDir": "lib",
+        "target": "es5",
+        "module": "esnext",
+        "lib": ["es5", "es6", "es2018"],
+        "sourceMap": true,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": false,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "lib", "tests"]
+}
