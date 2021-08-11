@@ -10,9 +10,6 @@ export class Purchase {
   @Column({ type: "decimal", nullable: false, precision: 10, scale: 2 })
   amount: number;
 
-  @Column({ nullable: false })
-  name: string;
-
   @ManyToOne(() => User, user => user.purchases, {
     nullable: false
   })

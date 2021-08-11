@@ -22,10 +22,6 @@ describe("DatabaseCleaner", () => {
     await connection.synchronize(true);
   });
 
-  it('works', () => {
-    expect(connection).to.be.not.eq(null);
-  });
-
   describe('FastTruncateStrategy', () => {
     beforeEach(() => {
       DatabaseCleaner.useStrategy(FastTruncateStrategy);
@@ -35,7 +31,6 @@ describe("DatabaseCleaner", () => {
       await connection.getRepository(User).insert({
         firstName: 'Ham',
         lastName:  'Burger',
-        age:       2
       });
 
       await DatabaseCleaner.clean(connection);
@@ -48,12 +43,10 @@ describe("DatabaseCleaner", () => {
       const user     = new User();
       user.firstName = 'Ham';
       user.lastName  = 'Burger';
-      user.age       = 2;
       await connection.manager.save(user);
 
       const purchase  = new Purchase();
       purchase.amount = 42;
-      purchase.name   = 'Good Purchase';
       purchase.user   = user;
       await connection.manager.save(purchase);
 
@@ -91,7 +84,6 @@ describe("DatabaseCleaner", () => {
       await connection.getRepository(User).insert({
         firstName: 'Ham',
         lastName:  'Burger',
-        age:       2
       });
 
       await DatabaseCleaner.clean(connection);

@@ -14,7 +14,4 @@ export class User {
 
     @OneToMany(() => Purchase, purchase => purchase.user)
     purchases: Purchase[];
-
-    @Column()
-    age: number;
 }
