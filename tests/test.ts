@@ -38,17 +38,10 @@ describe("DatabaseCleaner", () => {
         age:       2
       });
 
-      {
-        const count = await connection.getRepository(User).count();
-        expect(count).to.eq(1);
-      }
-
       await DatabaseCleaner.clean(connection);
 
-      {
-        const count = await connection.getRepository(User).count();
-        expect(count).to.eq(0);
-      }
+      const count = await connection.getRepository(User).count();
+      expect(count).to.eq(0);
     });
 
     it('it can truncate through foreign key references', async () => {
@@ -64,17 +57,13 @@ describe("DatabaseCleaner", () => {
       purchase.user   = user;
       await connection.manager.save(purchase);
 
-      {
-        const count = await connection.getRepository(User).count();
-        expect(count).to.eq(1);
-      }
-
       await DatabaseCleaner.clean(connection);
 
-      {
-        const count = await connection.getRepository(User).count();
-        expect(count).to.eq(0);
-      }
+      const userCount = await connection.getRepository(User).count();
+      expect(userCount).to.eq(0);
+
+      const purchaseCount = await connection.getRepository(Purchase).count();
+      expect(purchaseCount).to.eq(0);
     });
   });
 
@@ -86,17 +75,10 @@ describe("DatabaseCleaner", () => {
     it('should fully syncronize the database to the entity state', async () => {
       await connection.query('ALTER TABLE "user" ADD COLUMN not_in_entity_schema_column INT');
 
-      {
-        const column = await connection.query(`SELECT column_name FROM information_schema.columns WHERE table_name='user' AND column_name = 'not_in_entity_schema_column'`);
-        expect(column).to.have.length(1);
-      }
-
       await DatabaseCleaner.clean(connection);
 
-      {
-        const column = await connection.query(`SELECT column_name FROM information_schema.columns WHERE table_name='user' AND column_name = 'not_in_entity_schema_column'`);
-        expect(column).to.have.length(0);
-      }
+      const column = await connection.query(`SELECT column_name FROM information_schema.columns WHERE table_name='user' AND column_name = 'not_in_entity_schema_column'`);
+      expect(column).to.have.length(0);
     });
   });
 
@@ -111,11 +93,6 @@ describe("DatabaseCleaner", () => {
         lastName:  'Burger',
         age:       2
       });
-
-      {
-        let count = await connection.getRepository(User).count();
-        expect(count).to.eq(1);
-      }
 
       await DatabaseCleaner.clean(connection);
 

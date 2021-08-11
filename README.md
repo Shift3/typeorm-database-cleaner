@@ -68,5 +68,6 @@ In order to develop on the library itself, do the following things.
 
 ## Publish to npm
 
+1. Bump the version using `npm version [major | minor | patch]`
 1. Build the modules `npm run build`
 1. Publish to npm `npm publish`
