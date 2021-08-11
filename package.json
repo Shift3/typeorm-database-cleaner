@@ -6,7 +6,7 @@
   "module": "lib/index.esm.js",
   "scripts": {
     "build": "rollup -c",
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
+    "test": "ts-node -P tests/tsconfig.cjs.json ./node_modules/.bin/_mocha 'tests/**/*.ts'"
   },
   "files": [
     "lib",
