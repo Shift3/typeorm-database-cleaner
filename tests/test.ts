@@ -39,6 +39,18 @@ describe("DatabaseCleaner", () => {
       expect(count).to.eq(0);
     });
 
+    it('should restart sequences', async () => {
+      await connection.getRepository(User).insert({
+        firstName: 'Ham',
+        lastName:  'Burger',
+      });
+
+      await DatabaseCleaner.clean(connection);
+
+      const seq = (await connection.query("SELECT nextval('user_id_seq');"))[0].nextval;
+      expect(seq).to.eq('1');
+    })
+
     it('it can truncate through foreign key references', async () => {
       const user     = new User();
       user.firstName = 'Ham';

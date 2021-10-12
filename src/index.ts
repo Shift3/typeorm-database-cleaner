@@ -21,7 +21,7 @@ class FastTruncateStrategyImpl implements IDatabaseCleanerStrategy {
             await connection.manager.query(
                 'TRUNCATE ' + entities
                     .map(e => `"${e.tableName}"`)
-                    .join(', ')
+                    .join(', ') + ' RESTART IDENTITY'
             );
         } finally {
             await connection.query(
